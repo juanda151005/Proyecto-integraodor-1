@@ -1,23 +1,24 @@
-/* From Uiverse.io by ammarsaa */ 
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 350px;
-    padding: 20px;
-    border-radius: 20px;
-    position: relative;
-    background-color: #1a1a1a;
-    color: #fff;
-    border: 1px solid #333;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+body {
+    background-color: #e8e8e8;
   }
   
+  .form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 350px;
+      padding: 20px;
+      border-radius: 20px;
+      position: relative;
+      background-color: #fff;
+  
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.2);
+    }
+    
   .title {
     font-size: 28px;
     font-weight: 600;
@@ -26,7 +27,7 @@
     display: flex;
     align-items: center;
     padding-left: 30px;
-    color: #00bfff;
+    color: royalblue;
   }
   
   .title::before {
@@ -48,25 +49,25 @@
     width: 16px;
     border-radius: 50%;
     left: 0px;
-    background-color: #00bfff;
+    background-color: royalblue;
   }
   
   .message, 
-  .signin {
+  .login {
     font-size: 14.5px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(88, 87, 87, 0.822);
   }
   
-  .signin {
+  .login {
     text-align: center;
   }
   
-  .signin a:hover {
+  .login a:hover {
     text-decoration: underline royalblue;
   }
   
-  .signin a {
-    color: #00bfff;
+  .login a {
+    color: royalblue;
   }
   
   .flex {
@@ -80,36 +81,36 @@
   }
   
   .form label .input {
-    background-color: #333;
-    color: #fff;
     width: 100%;
-    padding: 20px 05px 05px 10px;
+    padding: 10px 10px 20px 10px;
     outline: 0;
     border: 1px solid rgba(105, 105, 105, 0.397);
     border-radius: 10px;
   }
   
   .form label .input + span {
-    color: rgba(255, 255, 255, 0.5);
+    color: grey;
     position: absolute;
     left: 10px;
-    top: 0px;
+    top: 15px;
     font-size: 0.9em;
     cursor: text;
     transition: 0.3s ease;
   }
   
   .form label .input:placeholder-shown + span {
-    top: 12.5px;
+    top: 15px;
     font-size: 0.9em;
   }
   
-  .form label .input:focus + span,
-  .form label .input:valid + span {
-    color: #00bfff;
-    top: 0px;
+  .form label .input:focus + span{
+    top: 30px;
     font-size: 0.7em;
     font-weight: 600;
+  }
+  
+  .form label .input:valid + span {
+    color: green;
   }
   
   .input {
@@ -124,11 +125,11 @@
     color: #fff;
     font-size: 16px;
     transform: .3s ease;
-    background-color: #00bfff;
+    background-color: royalblue;
   }
   
   .submit:hover {
-    background-color: #00bfff96;
+    background-color: rgb(56, 90, 194);
   }
   
   @keyframes pulse {
