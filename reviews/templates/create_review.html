@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Create a Review for {{ city_name }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Review</button>
+    {% if error %}
+      <p style="color: red;">{{ error }}</p>
+    {% endif %}
+  </form>
+{% endblock %}

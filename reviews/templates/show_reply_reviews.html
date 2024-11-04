@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="card mb-3">
+      <div class="row g-0">
+          <div>
+              <div class="card-body">
+                  <h2 class="card-title">{{ review.city }}</h2>
+                  <h2 class="card-title">Creado por: {{ review.user}}</h2>
+                  <p class="card-text">{{ review.general_review }}</p>
+                  <p class="card-text">Touristic Places Rate:{{ review.touristic_places_rate }}</p>
+                  <p class="card-text">History & Culture Rate: {{ review.history_and_culture_rate }}</p>
+                  <p class="card-text">Gastronomy Rate: {{ review.gastronomy_rate }}</p>
+                  <p class="card-text">Costs Rate: {{ review.costs_rate }}</p>
+                  <p class="card-text">Safety Rate: {{ reviews.safety_rate }}</p>
+                  <p class="card-text">Weather Rate: {{ review.weather_rate }}</p>
+                  <p class="card-text">General Rate: {{ review.general_rate }}</p>
+                  {% if user.is_authenticated %}
+                    <a class="btn btn-primary me-2"
+                      href="{% url 'create_reply_review' review.id %}"> 
+                      Responder
+                    </a>
+                  {% endif %}
+                  <hr />
+                  <h2 class="card-title">Replies:</h2>
+                  <ul class="list-group">
+                    {% for reply in replies %} 
+                      <li class="list-group-item pb-3 pt-3">
+                      <h5 class="card-title">
+                        Review by {{ reply.user.username }} 
+                      </h5>  
+                      <h6 class="card-subtitle mb-2 text-muted"> 
+                        {{ reply.date }} 
+                      </h6> 
+                      <p class="card-text">{{ reply.text }}</p>
+                      </li>  
+                    {% endfor %}
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

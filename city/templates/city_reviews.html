@@ -6,7 +6,7 @@
    
 </head>
     <h1>Reseñas de {{ city.name }}</h1>
-    
+    <h2>Click aca para crear una nueva review de {{ city.name }}: <a href="{% url 'create_review' city.name %}" class="btn btn-primary mx-2">Crear Review</a></h2>
     {% if reviews %}
         {% for review in reviews %}
         <div class="card mb-3">
@@ -14,6 +14,7 @@
                 <div>
                     <div class="card-body">
                         <h2 class="card-title">{{ review.city }}</h2>
+                        <h2 class="card-title">Creado por: {{ review.user}}</h2>
                         <p class="card-text">{{ review.general_review }}</p>
                         <p class="card-text">Touristic Places Rate: {{ review.touristic_places_rate }}</p>
                         <p class="card-text">History & Culture Rate: {{ review.history_and_culture_rate }}</p>
@@ -25,6 +26,7 @@
                     </div>
                 </div>
             </div>
+            <a href="{% url 'show_reply_reviews' review.id %}" class="btn btn-primary mx-2">Ver respuestas a esta Review</a>
         </div>
         {% endfor %}
     {% else %}

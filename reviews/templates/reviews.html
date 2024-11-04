@@ -10,6 +10,7 @@
             <div>
                 <div class="card-body">
                     <h2 class="card-title">{{ reviews.city }}</h2>
+                    <h2 class="card-title">Creado por: {{ reviews.user}}</h2>
                     <p class="card-text">{{ reviews.general_review }}</p>
                     <p class="card-text">Touristic Places Rate:{{ reviews.touristic_places_rate }}</p>
                     <p class="card-text">History & Culture Rate: {{ reviews.history_and_culture_rate }}</p>
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </div>
+        <a href="{% url 'show_reply_reviews' reviews.id %}" class="btn btn-primary mx-2">Ver respuestas a esta Review</a>
     </div>
     {% endfor %}
 </div>

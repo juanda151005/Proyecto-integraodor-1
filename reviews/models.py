@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from city.models import City
 
 class range(models.IntegerChoices):
         ONE = 1
@@ -13,6 +15,7 @@ class range(models.IntegerChoices):
         TEN = 10
 
 class Reviews(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     city = models.CharField(max_length=100)
     general_review = models.CharField(max_length=2000)
     touristic_places_rate = models.IntegerField(choices=range.choices, default=range.ONE)
@@ -41,3 +44,12 @@ class Reviews(models.Model):
 
     def __str__(self):
         return self.city
+
+class ReplyReview(models.Model):
+    text = models.CharField(max_length=100) 
+    date = models.DateTimeField(auto_now_add=True)  
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  
+    review = models.ForeignKey(Reviews, on_delete=models.CASCADE, null=True, blank=True)
+    
+    def __str__(self): 
+        return self.text
