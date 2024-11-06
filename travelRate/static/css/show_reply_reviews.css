@@ -1,0 +1,90 @@
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    max-height: 1000px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    margin: 20px;
+  }
+
+  .card:hover {
+    background-color: #3498db;
+    box-shadow:#2980b9;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    color: #212121;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .content .heading {
+    font-weight: 700;
+    font-size: 32px;
+  }
+  
+  .content .desc {
+    line-height: 1.5;
+    
+  }
+  
+  .content .btnn {
+    color: #e8e8e8;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(-45deg, #3498db 0%, #2980b9 100%);
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(-45deg, #3498db 0%, #2980b9 100%);
+    z-index: -1;
+    transition: width 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+    
+  }
+  
+  .card:hover::before {
+    width: 100%;
+    
+  }
+  
+  .card:hover {
+    box-shadow: none;
+    
+  }
+  
+  .card:hover .btnn {
+    color: #212121;
+    background: #e8e8e8;
+  }
+  
+  .content .btnn:hover {
+    color: #212121;
+    background: #e8e8e8;
+    outline: 2px solid #e8e8e8; 
+  }
+  
+  .content .btnn:active {
+    box-shadow: none;
+  }
+  

@@ -4,24 +4,10 @@
   {% block style %}
   {% endblock style %}
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <style>
-      .glass-navbar {
-        width: 100vw;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(4px);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 1030;
-      }
-  </style>
-
 </head>
 
-<nav class="navbar navbar-expand-lg glass-navbar w-100">
-  <div class="container-fluid px-4">
+<nav class="glass-navbar navbar navbar-expand-lg">
+  <div class="container-fluid">
       <!-- Logo y nombre a la izquierda -->
       <a class="navbar-brand" href="{% url 'home' %}">
           {% load static %}
@@ -34,7 +20,7 @@
           <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
           <!-- Secciones de navegación centradas -->
           <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
               <li class="nav-item">

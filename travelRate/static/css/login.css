@@ -97,10 +97,12 @@ body {
     cursor: text;
     transition: 0.3s ease;
   }
-  
-  .form label .input:placeholder-shown + span {
-    top: 15px;
-    font-size: 0.9em;
+
+  .form label .input:not(:placeholder-shown) + span {
+    top: 30px;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: green;
   }
   
   .form label .input:focus + span{
