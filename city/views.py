@@ -20,13 +20,50 @@ def home(request):
     return render(request, 'home.html', {'searchTerm': searchTerm, 'cities': cities})
 
 def city(request):
-    searchTerm=request.GET.get('searchCity')
+    searchTerm = request.GET.get('searchCity')
+    rating = request.GET.get('rating')
+    sort = request.GET.get('sort')
+    country = request.GET.get('country')
+    
+    # Obtener todas las ciudades inicialmente
+    cities = City.objects.all()
+
+    # Filtrar por nombre si se proporciona un término de búsqueda
     if searchTerm:
-        cities = City.objects.filter(name__icontains=searchTerm)
-    else:  
-        cities=City.objects.all()
-    cities = cities.order_by('-rate')
-    return render(request, 'city.html', {'searchTerm': searchTerm, 'cities': cities})
+        cities = cities.filter(name__icontains=searchTerm)
+
+    # Filtrar por país
+    if country:
+        cities = cities.filter(country=country)
+
+    # Filtrar por calificación
+    if rating:
+        if rating == 'high':
+            cities = cities.filter(rate__gte=8)
+        elif rating == 'medium':
+            cities = cities.filter(rate__gte=4, rate__lt=6)
+        elif rating == 'low':
+            cities = cities.filter(rate__lt=4)
+
+    # Diccionario de opciones de ordenamiento
+    sort_options = {
+        'name-asc': 'name',
+        'name-desc': '-name',
+        'rate-asc': 'rate',
+        'rate-desc': '-rate',
+        'country-asc': 'country',
+        'country-desc': '-country'
+    }
+
+    # Aplicar la ordenación si 'sort' es válido
+    if sort in sort_options:
+        cities = cities.order_by(sort_options[sort])
+    
+    # Obtener la lista de países distintos
+    countries = City.objects.values_list('country', flat=True).distinct()
+
+    # Renderizar la plantilla con los datos de las ciudades
+    return render(request, 'city.html', {'searchTerm': searchTerm, 'cities': cities, 'countries': countries})
 
 def top_cities_view(request):
     searchTerm = request.GET.get('searchCity', '').strip()  # Usa el mismo nombre que el del formulario

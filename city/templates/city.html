@@ -21,7 +21,37 @@
         </label>
         <input type="text" class="form-control" name="searchCity"/>
       </div>
-      <button type="submit" class="btn btn-primary">Search</button>
+      <div class="mb-3">
+        <label for="rating" class="form-label">Calificación:</label>
+        <select name="rating" class="form-control">
+            <option value="">Seleccione una calificación</option>
+            <option value="high" {% if request.GET.rating == 'high' %}selected{% endif %}>Alta</option>
+            <option value="medium" {% if request.GET.rating == 'medium' %}selected{% endif %}>Media</option>
+            <option value="low" {% if request.GET.rating == 'low' %}selected{% endif %}>Baja</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="country" class="form-label">País:</label>
+        <select name="country" class="form-control">
+            <option value="">Seleccione un país</option>
+            {% for country in countries %}
+                <option value="{{ country }}" {% if request.GET.country == country %}selected{% endif %}>{{ country }}</option>
+            {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="sort" class="form-label">Ordenar por:</label>
+        <select name="sort" class="form-control">
+            <option value="">Seleccione un criterio</option>
+            <option value="name-asc" {% if request.GET.sort == 'name-asc' %}selected{% endif %}>Nombre: A-Z</option>
+            <option value="name-desc" {% if request.GET.sort == 'name-desc' %}selected{% endif %}>Nombre: Z-A</option>
+            <option value="rate-asc" {% if request.GET.sort == 'rate-asc' %}selected{% endif %}>Calificación: Baja a Alta</option>
+            <option value="rate-desc" {% if request.GET.sort == 'rate-desc' %}selected{% endif %}>Calificación: Alta a Baja</option>
+            <option value="country-asc" {% if request.GET.sort == 'country-asc' %}selected{% endif %}>País: A-Z</option>
+            <option value="country-desc" {% if request.GET.sort == 'country-desc' %}selected{% endif %}>País: Z-A</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Buscar</button>
     </form>
     <p>Searching for: {{ searchTerm }}</p>
     
