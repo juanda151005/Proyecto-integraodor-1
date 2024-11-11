@@ -9,6 +9,10 @@ import time
 from datetime import datetime
 from django.utils import timezone
 
+def top_250_cities(request):
+    # Obtener las mejores 250 ciudades basadas en la calificación
+    top_cities = City.objects.order_by('-rate')[:250]
+    return render(request, 'top_250.html', {'top_cities': top_cities})
 
 def home(request):
     searchTerm=request.GET.get('searchCity')
