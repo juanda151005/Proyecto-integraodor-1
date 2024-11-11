@@ -52,7 +52,6 @@ Project-integrator-1
 ├── accounts
 ├── city
 ├── media
-├── ranking
 ├── reviews
 ├── routes
 ├── travelRate
