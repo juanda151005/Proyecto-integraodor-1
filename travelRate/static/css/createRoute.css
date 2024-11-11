@@ -1,0 +1,70 @@
+body {
+    background-color: #e8e8e8;
+    color: #333;
+}
+
+/* Contenedor principal */
+.formulario {
+    max-width: 800px;
+    height: auto;
+    margin: 40px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* Título */
+h1 {
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 5rem;
+}
+
+/* Formularios */
+form {
+    margin-top: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.mb-3 input, .mb-3 textarea, .mb-3 select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Botones */
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Recomendaciones */
+h3 {
+    margin-top: 30px;
+    color: #343a40;
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
