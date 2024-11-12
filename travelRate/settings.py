@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-1^dt-2y7liog*^vjvx+$#tc&9*50-tjcl8-1n566k3vp9ehpt1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.171.218.110','localhost']
+ALLOWED_HOSTS = ['199.223.234.233','localhost']
 
 
 # Application definition
@@ -135,6 +135,6 @@ STATICFILES_DIRS = [
     'travelRate/static/',
 ]
 CSRF_TRUSTED_ORIGINS = [
-    'http://34.171.218.110/', 
+    'http://199.223.234.233/', 
     'http://localhost:8000/',
 ]
