@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-1^dt-2y7liog*^vjvx+$#tc&9*50-tjcl8-1n566k3vp9ehpt1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['34.57.168.21']
+ALLOWED_HOSTS = ['34.171.218.110','localhost']
 
 
 # Application definition
@@ -81,8 +81,8 @@ PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',  
 ]
 
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
 
@@ -133,4 +133,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     'travelRate/static/',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'http://34.171.218.110/', 
+    'http://localhost:8000/',
 ]

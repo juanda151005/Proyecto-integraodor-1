@@ -13,7 +13,7 @@ class recomendacionesIA():
         promt = f"""
         Imagina que eres un asesor de viajes y tienes la tarea de recomendar varias opciones de destino siguiente con base en una lista de ciudades ya decididas por el cliente, las cuales el piensa visitar antes de la ciudad que tu debes recomendar. 
         
-        Las ciudades definidadas por el cliente son {citylist}.
+        Las ciudades definidadas por el cliente son {citylist}, pon estas ciudades en orden antes de que digas las que recomiendas al igual con su descripcion.
 
         Aparte debes crear una breve descripcion en la cual le vas a decir al usuario que sitios turisticos puede visitar en las ciudades recomendadas.
         

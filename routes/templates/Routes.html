@@ -38,7 +38,7 @@
                         <h3 class="card-title">{{ route.name }}</h3>
                         <p class="card-text"><strong>Creador:</strong> {{ route.user.username }}</p>
                         <p class="card-text"><strong>Ciudades:</strong> {{ route.cities }}</p>
-                        <p class="card-text"><strong>Descripción:</strong> {{ route.description }}</p>
+                        <p class="card-text"><strong>Descripción: </strong>{{ route.description }}</p>
                         <p class="card-text"><small class="text-muted">Creado: {{ route.created_at|date:"d M Y" }}</small></p>
                         {% if route.user == request.user %}
                         <a href="{% url 'edit_route' route.id %}" class="btn btn-warning mx-2">Modificar Ruta</a>

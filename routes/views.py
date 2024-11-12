@@ -7,8 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
 def route(request):
-    public_routes=Route.objects.filter(estado='public')
-    return render(request, 'Routes.html',{'public_routes': public_routes})
+    public_routes = Route.objects.filter(estado='public')
+    for route in public_routes:
+        route.description=route.description.replace("[","").replace("]","").replace("'","")
+    return render(request, 'Routes.html', {'public_routes': public_routes})
 
 def create_route(request):
     recommendation1 = None
@@ -140,24 +142,58 @@ def edit_route(request, id):
 
     if request.method == 'POST':
         form = RouteForm(request.POST, instance=route)  
+        form_list = FormRecommendationList(request.POST)
+        form_origin_city = FormRecommendationOriginCity(request.POST)
+        form_description = FormRecommendationDescription(request.POST)
+
+        ia = IA(request)
+
+        # Si el formulario de edición es válido
         if form.is_valid():
-            form.save()
+            # Guardamos los cambios en la ruta
+            updated_route = form.save(commit=False)
+            
+            # Obtenemos las nuevas ciudades editadas
+            new_cities = updated_route.cities.split(", ")
+
+            # Si la ruta fue creada con IA y tiene ciudades nuevas, actualizar las recomendaciones
+            if new_cities and route.name.startswith("ruta con ayuda de ia"):
+                # Usar IA para regenerar la descripción con las nuevas ciudades
+                recommendation = ia.RecommendCityWithList(new_cities)
+
+                # Actualizamos la ruta con la nueva descripción generada por IA
+                updated_route.description = recommendation['description']
+                updated_route.cities = ", ".join(recommendation['cities'])
+
+            updated_route.save()  # Guardamos los cambios
+
             messages.success(request, 'Ruta editada exitosamente.')
-            return redirect('user_routes') 
+            return redirect('user_routes')
+
     else:
         form = RouteForm(instance=route)
-    return render(request, 'EditRoute.html', {'form': form, 'route': route})
+        form_list = FormRecommendationList()
+        form_origin_city = FormRecommendationOriginCity()
+        form_description = FormRecommendationDescription()
+
+    return render(request, 'EditRoute.html', {
+        'form': form,
+        'route': route,
+        'form_list': form_list,
+        'form_origin_city': form_origin_city,
+        'form_description': form_description,
+    })
+
+
 
 @login_required
 def delete_route(request, id):
-    route = get_object_or_404(Route, id=id)
-
-    if route.user != request.user:
-        messages.error(request, "No tienes permiso para eliminar esta ruta.")
-        return redirect('user_routes')
+    route = get_object_or_404(Route, id=id, user=request.user)
     
     if request.method == "POST":
         route.delete()
         messages.success(request, "Ruta eliminada exitosamente.")
-        return redirect('user_routes')
+    else:
+        messages.error(request, "No tienes permiso para eliminar esta ruta.")
+    
     return redirect('user_routes')
