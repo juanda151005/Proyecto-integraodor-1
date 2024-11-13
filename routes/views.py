@@ -135,7 +135,7 @@ def user_routes(request):
 @login_required
 def edit_route(request, id):
     route = get_object_or_404(Route, id=id)
-
+    route.description=route.description.replace("[","").replace("]","").replace("'","")
     if route.user != request.user:
         messages.error(request, "No tienes permiso para modificar esta ruta.")
         return redirect('user_routes')
