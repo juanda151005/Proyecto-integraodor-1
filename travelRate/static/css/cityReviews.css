@@ -12,9 +12,9 @@ body {
   
   .cards .card .card-body h2,
     .cards .card .card-body p {
-    font-size: 1em; /* Ajuste inicial */
-    flex-grow: 1; /* Permite que el texto ocupe todo el espacio disponible */
-    flex-shrink: 1; /* Permite que el texto se reduzca si es necesario */
+    font-size: 1em;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
   .cards .red {

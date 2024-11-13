@@ -97,12 +97,12 @@ section h1 {
     left: 0;
     width: 100%;
     padding: 7px;
-    background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro para contraste */
+    background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
     border-radius: 10px;
     text-align: center;
-    visibility: visible; /* Siempre visible fuera del hover */
-    opacity: 1; /* Siempre visible fuera del hover */
+    visibility: visible;
+    opacity: 1;
     transition: visibility 0.2s, opacity 0.2s;
 }
 

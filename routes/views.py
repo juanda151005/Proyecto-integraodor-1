@@ -148,24 +148,16 @@ def edit_route(request, id):
 
         ia = IA(request)
 
-        # Si el formulario de edición es válido
         if form.is_valid():
-            # Guardamos los cambios en la ruta
             updated_route = form.save(commit=False)
-            
-            # Obtenemos las nuevas ciudades editadas
             new_cities = updated_route.cities.split(", ")
 
-            # Si la ruta fue creada con IA y tiene ciudades nuevas, actualizar las recomendaciones
             if new_cities and route.name.startswith("ruta con ayuda de ia"):
-                # Usar IA para regenerar la descripción con las nuevas ciudades
                 recommendation = ia.RecommendCityWithList(new_cities)
-
-                # Actualizamos la ruta con la nueva descripción generada por IA
                 updated_route.description = recommendation['description']
                 updated_route.cities = ", ".join(recommendation['cities'])
 
-            updated_route.save()  # Guardamos los cambios
+            updated_route.save()
 
             messages.success(request, 'Ruta editada exitosamente.')
             return redirect('user_routes')
